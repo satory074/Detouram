@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 100kyoku, S, A, Maj
 100kyoku, E, Bb, Maj
 2525/2013, S, Eb, min
@@ -90,10 +91,36 @@ Splash, E, F, Maj
 Splash, E, F, min
 Tabiemaki, S, Ab, Air
 Tabiemaki, E, Ab, Maj
+=======
+Bokuranouta, S, Ab, Air
+Bokuranouta, E, D, Maj
+CMY, S, G, Air
+CMY, E, Db, Maj
+Kakenuke, S, Eb, Maj
+Kakenuke, E, Db, Maj
+Kakenuke_Taiou, S, F, Maj
+Kakenuke_Taiou, E, E, Maj
+Kasoku, S, D, Air
+Kumikyoku, S, Eb, Maj
+Kumikyoku, E, Db, min
+LuckyStar, S, F, Maj
+LuckyStar, E, F, Maj
+Nanairo, S, Fs, Air
+Nanairo, E, Ab, Air
+Nanairo, E, Ab, Maj
+Nikopoi, S, D, min
+Nikopoi, E, Eb, Maj
+Ryuuseigun, S, Ab, Air
+Ryuuseigun, E, Db, Maj
+Splash, S, C, Maj
+Umauma, S, F, Maj
+Umauma, E, F, Maj
+>>>>>>> 3faac67 ( feat: add medley data)
 Ura, S, C, min
 Ura, E, C, min
 Uranoura, S, Db, Maj
 Uranoura, E, C, Maj
+<<<<<<< HEAD
 VIVACE, S, Eb, Maj
 VIVACE, S, Eb, Air
 VIVACE, E, A, Maj
@@ -102,3 +129,5 @@ X, S, F, min
 X, S, F, Air
 X, E, Ab, Air
 X, E, Ab, Maj
+=======
+>>>>>>> 3faac67 ( feat: add medley data)
