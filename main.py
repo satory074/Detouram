@@ -1,6 +1,7 @@
 import csv
-import networkx as nx
+
 import matplotlib.pyplot as plt
+import networkx as nx
 
 CSVPATH = "./data/medley_data.csv"
 NOTE_TO_INDEX = {
@@ -62,5 +63,9 @@ def make_network(slist, elist):
 slist, elist = read_csv()
 G = make_network(slist, elist)
 
-nx.draw_networkx(G, with_labels=True, font_size=8)
+# Draw the graph
+pos = nx.circular_layout(G)
+nx.draw(G, with_labels=True, font_size=8, node_size=30, pos=pos)
+# nx.draw_kamada_kawai(G, with_labels=True, font_size=8, node_size=30)
+
 plt.show()
