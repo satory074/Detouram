@@ -32,6 +32,7 @@ def read_csv():
     slist = []
     elist = []
     for t, se, chord, scale in data:
+        print(t)
         if se == "S":
             slist.append((t, se, NOTE_TO_INDEX[chord], scale))
         elif se == "E":
@@ -48,8 +49,12 @@ def make_network(slist, elist):
             if st == et:
                 continue
 
-            if (schord, sscale) == (echord, escale):
-                G.add_edge(et, st)
+            if schord == echord:
+                if sscale == escale:
+                    G.add_edge(et, st)
+
+                if sscale == "Maj" and escale == "Air":
+                    G.add_edge(et, st)
 
     return G
 
