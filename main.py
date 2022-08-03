@@ -30,38 +30,50 @@ def read_csv():
         reader = csv.reader(f, skipinitialspace=True)
         data = list(reader)
 
-    slist = []
-    elist = []
-    for t, se, chord, scale in data:
-        print(t)
-        if se == "S":
-            slist.append((t, se, NOTE_TO_INDEX[chord], scale))
-        elif se == "E":
-            elist.append((t, se, NOTE_TO_INDEX[chord], scale))
+    songdict = {}
+    for t, se, key, scale in data:
+        if t not in songdict:
+            songdict[t] = {"S": {}, "E": {}}
 
-    return slist, elist
+        songdict[t][se] = {
+            f"{key}{scale}": {
+                "key": key,
+                "scale": scale,
+                "note_index": NOTE_TO_INDEX[key],
+            }
+        }
+
+    scaledict = {"S": {}, "E": {}}
+    for t, se, key, scale in data:
+        if f"{key}{scale}" in scaledict[se]:
+            scaledict[se][f"{key}{scale}"].append(t)
+        else:
+            scaledict[se][f"{key}{scale}"] = [t]
+
+    return songdict, scaledict
 
 
-def make_network(slist, elist):
+def make_network(songdict, scaledict):
     G = nx.DiGraph()
 
-    for st, _, schord, sscale in slist:
-        for et, _, echord, escale in elist:
-            if st == et:
+    for start_chordname in scaledict["S"].keys():
+        for end_chordname in scaledict["E"].keys():
+            if start_chordname != end_chordname:
                 continue
 
-            if schord == echord:
-                if sscale == escale:
-                    G.add_edge(et, st)
+            for start_title in scaledict["S"][start_chordname]:
+                for end_title in scaledict["E"][end_chordname]:
+                    if start_title == end_title:
+                        continue
 
-                if sscale == "Maj" and escale == "Air":
-                    G.add_edge(et, st)
+                    for end_start_chordname in songdict[end_title]["S"].keys():
+                        G.add_edge(end_start_chordname, start_chordname)
 
     return G
 
 
-slist, elist = read_csv()
-G = make_network(slist, elist)
+songdict, scaledict = read_csv()
+G = make_network(songdict, scaledict)
 
 # Draw the graph
 pos = nx.circular_layout(G)
